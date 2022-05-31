@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "213555378405",
+    "project_id": "pied-a02b4",
+    "storage_bucket": "pied-a02b4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:213555378405:android:555ae070fc58cb74657c0c",
+        "android_client_info": {
+          "package_name": "com.firelord.pie"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "213555378405-4168ntdm7ap8tcqpu82k81nh9tujafvk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.firelord.pie",
+            "certificate_hash": "286963b3ce8c74af260448f7b8c8fc8bdda98cbf"
+          }
+        },
+        {
+          "client_id": "213555378405-0okraraebvilg41d18b33m84qnr225if.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCliMj8v1xfiYvElQD2G2k4qVB5uCEJRtE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "213555378405-0okraraebvilg41d18b33m84qnr225if.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
