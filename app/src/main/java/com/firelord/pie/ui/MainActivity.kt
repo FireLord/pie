@@ -1,10 +1,11 @@
-package com.firelord.pie
+package com.firelord.pie.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import com.firelord.pie.R
 import com.firelord.pie.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

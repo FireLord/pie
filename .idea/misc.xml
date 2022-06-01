@@ -4,7 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.379" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.18552036199095023" />
+        <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.39427083333333335" />
         <entry key="app/src/main/res/layout/fragment_pie.xml" value="0.39427083333333335" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.39427083333333335" />

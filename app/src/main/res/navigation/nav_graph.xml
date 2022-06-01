@@ -7,17 +7,17 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.firelord.pie.HomeFragment"
+        android:name="com.firelord.pie.ui.fragments.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/pieFragment"
-        android:name="com.firelord.pie.PieFragment"
+        android:name="com.firelord.pie.ui.fragments.PieFragment"
         android:label="fragment_pie"
         tools:layout="@layout/fragment_pie" />
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.firelord.pie.ProfileFragment"
+        android:name="com.firelord.pie.ui.fragments.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
 </navigation>
