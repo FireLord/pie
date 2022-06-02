@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/homeFragment"
-        android:title="Home" />
+        android:title="Home"
+        android:icon="@drawable/home" />
+
     <item android:id="@+id/pieFragment"
-        android:title="Pie" />
+        android:title="Pie"
+        android:icon="@drawable/pie_chart" />
+
     <item android:id="@+id/profileFragment"
-        android:title="Profile" />
+        android:title="Profile"
+        android:icon="@drawable/manage_accounts" />
 </menu>
