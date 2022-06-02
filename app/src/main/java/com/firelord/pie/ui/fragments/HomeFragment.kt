@@ -27,7 +27,7 @@ class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
 
     var year = 0
-    var month = 1
+    var month = 0
 
     var monDay = 0
     var tueDay = 0
@@ -45,7 +45,7 @@ class HomeFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
 
 
-        val years = listOf(1970..2022).flatten()
+        val years = listOf(1970..2032).flatten()
         val yearsAdapter = ArrayAdapter(requireContext(), R.layout.list_item, years)
         (binding.etYearEdit as? AutoCompleteTextView)?.setAdapter(yearsAdapter)
 
