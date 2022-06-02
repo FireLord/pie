@@ -1,14 +1,13 @@
 package com.firelord.pie.ui.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView.OnItemClickListener
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
-import android.widget.Toast
-import androidx.core.view.get
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.firelord.pie.R
@@ -19,11 +18,24 @@ import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet
 import com.github.mikephil.charting.utils.ColorTemplate
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class HomeFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeBinding
+
+    var year = 0
+    var month = 1
+
+    var monDay = 0
+    var tueDay = 0
+    var wedDay = 0
+    var thurDay = 0
+    var friDay = 0
+    var satDay = 0
+    var sunDay = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -54,19 +66,35 @@ class HomeFragment : Fragment() {
         val monthsAdapter = ArrayAdapter(requireContext(), R.layout.list_item, months)
         (binding.etMonthEdit as? AutoCompleteTextView)?.setAdapter(monthsAdapter)
 
-        (binding.etMonthEdit as? AutoCompleteTextView)?.onItemClickListener =
+        // Year Listener
+        (binding.etYearEdit as? AutoCompleteTextView)?.onItemClickListener =
             OnItemClickListener { adapterView, view, i, l ->
-                val selectedValue: String = months[i]
-                Toast.makeText(
-                    activity,
-                    "Selected item is $selectedValue, index: $i",
-                    Toast.LENGTH_SHORT
-                )
-                    .show()
+                year = years[i]
+                calculateDaysCount()
+                drawChart()
             }
 
+        // Month listener
+        (binding.etMonthEdit as? AutoCompleteTextView)?.onItemClickListener =
+            OnItemClickListener { adapterView, view, i, l ->
+                month = i+1
+                Log.i("monthCount:","$month")
+                calculateDaysCount()
+                drawChart()
+            }
 
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        drawChart()
+    }
+
+    fun drawChart() {
+        // Chart setup here
         val chart = binding.barChart
+
         chart.description.isEnabled = false
 
         // if more than 60 entries are displayed in the chart, no values will be
@@ -92,11 +120,13 @@ class HomeFragment : Fragment() {
 
         val values = ArrayList<BarEntry>()
 
-        values.add(BarEntry(1.toFloat(), 3.toFloat()))
-        values.add(BarEntry(2.toFloat(), 2.toFloat()))
-        values.add(BarEntry(3.toFloat(), 5.toFloat()))
-        values.add(BarEntry(4.toFloat(), 7.toFloat()))
-        values.add(BarEntry(5.toFloat(), 4.toFloat()))
+        values.add(BarEntry(1.toFloat(), monDay.toFloat()))  // Monday
+        values.add(BarEntry(2.toFloat(), tueDay.toFloat()))  // Tuesday
+        values.add(BarEntry(3.toFloat(), wedDay.toFloat()))  // Wednesday
+        values.add(BarEntry(4.toFloat(), thurDay.toFloat()))  // Thursday
+        values.add(BarEntry(5.toFloat(), friDay.toFloat()))  // Friday
+        values.add(BarEntry(6.toFloat(), satDay.toFloat()))  // Saturday
+        values.add(BarEntry(7.toFloat(), sunDay.toFloat()))  // Sunday
 
         val set1: BarDataSet
 
@@ -120,6 +150,32 @@ class HomeFragment : Fragment() {
 
         chart.invalidate()
 
-        return binding.root
+    }
+
+    fun calculateDaysCount() {
+        monDay = countDayOccurence(year,month,1)
+        tueDay = countDayOccurence(year,month,2)
+        wedDay = countDayOccurence(year,month,3)
+        thurDay = countDayOccurence(year,month,4)
+        friDay = countDayOccurence(year,month,5)
+        satDay = countDayOccurence(year,month,6)
+        sunDay = countDayOccurence(year,month,7)
+
+    }
+
+    fun countDayOccurence(year: Int, month: Int, dayToFindCount: Int): Int {
+        val calendar = Calendar.getInstance()
+        // Note that month is 0-based in calendar, bizarrely.
+        calendar[year, month - 1] = 1
+        val daysInMonth = calendar.getActualMaximum(Calendar.DAY_OF_MONTH)
+        var count = 0
+        for (day in 1..daysInMonth) {
+            calendar[year, month - 1] = day
+            val dayOfWeek = calendar[Calendar.DAY_OF_WEEK]
+            if (dayOfWeek == dayToFindCount) {
+                count++
+            }
+        }
+        return count
     }
 }
