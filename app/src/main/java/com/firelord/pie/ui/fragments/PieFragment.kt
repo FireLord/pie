@@ -9,9 +9,14 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.firelord.pie.R
 import com.firelord.pie.databinding.FragmentPieBinding
+import com.github.mikephil.charting.animation.Easing
+import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
+import com.github.mikephil.charting.formatter.PercentFormatter
+import com.github.mikephil.charting.utils.ColorTemplate
+import com.github.mikephil.charting.utils.MPPointF
 
 
 class PieFragment : Fragment() {
@@ -25,15 +30,62 @@ class PieFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_pie, container, false)
 
-        showPieChart()
+        showNewPieChart()
+        setData()
         return binding.root
     }
 
-    private fun showPieChart() {
-        val pieChart = binding.pieChartView
-        val pieEntries: ArrayList<PieEntry> = ArrayList()
-        val label = "type"
 
+    private fun showNewPieChart(){
+
+        val chart = binding.pieChartView
+        chart.setUsePercentValues(true)
+        chart.description.isEnabled = false
+        chart.setExtraOffsets(5f, 10f, 5f, 5f)
+
+        chart.dragDecelerationFrictionCoef = 0.95f
+
+        chart.isDrawHoleEnabled = true
+        chart.setHoleColor(Color.WHITE)
+
+        chart.setTransparentCircleColor(Color.WHITE)
+        chart.setTransparentCircleAlpha(110)
+
+        chart.holeRadius = 58f
+        chart.transparentCircleRadius = 61f
+
+        chart.setDrawCenterText(true)
+
+        chart.rotationAngle = 0f
+        // enable rotation of the chart by touch
+        // enable rotation of the chart by touch
+        chart.isRotationEnabled = true
+        chart.isHighlightPerTapEnabled = true
+
+        chart.animateY(1400, Easing.EaseInOutQuad)
+        // chart.spin(2000, 0, 360);
+
+        // chart.spin(2000, 0, 360);
+        val l = chart.legend
+        l.verticalAlignment = Legend.LegendVerticalAlignment.TOP
+        l.horizontalAlignment = Legend.LegendHorizontalAlignment.RIGHT
+        l.orientation = Legend.LegendOrientation.VERTICAL
+        l.setDrawInside(false)
+        l.xEntrySpace = 7f
+        l.yEntrySpace = 0f
+        l.yOffset = 0f
+
+        // entry label styling
+
+        // entry label styling
+        chart.setEntryLabelColor(Color.WHITE)
+        chart.setEntryLabelTextSize(12f)
+
+    }
+
+    private fun setData() {
+        val chart = binding.pieChartView
+        val entries: ArrayList<PieEntry> = ArrayList()
         //initializing data
         val typeAmountMap: MutableMap<String, Int> = HashMap()
         typeAmountMap["Cash"] = 40
@@ -41,29 +93,35 @@ class PieFragment : Fragment() {
         typeAmountMap["Clothes"] = 20
         typeAmountMap["Fuel"] = 10
 
-        //initializing colors for the entries
-        val colors: ArrayList<Int> = ArrayList()
-        colors.add(Color.parseColor("#304567"))
-        colors.add(Color.parseColor("#309967"))
-        colors.add(Color.parseColor("#476567"))
-        colors.add(Color.parseColor("#890567"))
-
         //input data and fit data into pie chart entry
         for (type in typeAmountMap.keys) {
-            pieEntries.add(PieEntry(typeAmountMap[type]!!.toFloat(), type))
+            entries.add(PieEntry(typeAmountMap[type]!!.toFloat(), type))
         }
 
-        //collecting the entries with label name
-        val pieDataSet = PieDataSet(pieEntries, label)
-        //setting text size of the value
-        pieDataSet.valueTextSize = 12f
-        //providing color list for coloring different entries
-        pieDataSet.colors = colors
-        //grouping the data set from entry to chart
-        val pieData = PieData(pieDataSet)
-        //showing the value of the entries, default true if not set
-        pieData.setDrawValues(true)
-        pieChart.setData(pieData)
-        pieChart.invalidate()
+        val dataSet = PieDataSet(entries, "Election Results")
+        dataSet.setDrawIcons(false)
+        dataSet.sliceSpace = 3f
+        dataSet.iconsOffset = MPPointF(0F, 40F)
+        dataSet.selectionShift = 5f
+
+        // add a lot of colors
+        val colors : ArrayList<Int> = ArrayList()
+        for (c in ColorTemplate.VORDIPLOM_COLORS) colors.add(c)
+        for (c in ColorTemplate.JOYFUL_COLORS) colors.add(c)
+        for (c in ColorTemplate.COLORFUL_COLORS) colors.add(c)
+        for (c in ColorTemplate.LIBERTY_COLORS) colors.add(c)
+        for (c in ColorTemplate.PASTEL_COLORS) colors.add(c)
+        colors.add(ColorTemplate.getHoloBlue())
+        dataSet.colors = colors
+        //dataSet.setSelectionShift(0f);
+        val data = PieData(dataSet)
+        data.setValueFormatter(PercentFormatter())
+        data.setValueTextSize(11f)
+        data.setValueTextColor(Color.WHITE)
+        chart.setData(data)
+
+        // undo all highlights
+        chart.highlightValues(null)
+        chart.invalidate()
     }
 }
