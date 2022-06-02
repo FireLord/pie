@@ -97,8 +97,7 @@ class PieFragment : Fragment() {
         for (type in typeAmountMap.keys) {
             entries.add(PieEntry(typeAmountMap[type]!!.toFloat(), type))
         }
-
-        val dataSet = PieDataSet(entries, "Election Results")
+        val dataSet = PieDataSet(entries, "Daily Transactions")
         dataSet.setDrawIcons(false)
         dataSet.sliceSpace = 3f
         dataSet.iconsOffset = MPPointF(0F, 40F)
