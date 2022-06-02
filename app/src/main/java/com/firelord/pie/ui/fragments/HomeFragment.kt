@@ -33,6 +33,39 @@ class HomeFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
 
 
+        val years = listOf(1970..2022).flatten()
+        val yearsAdapter = ArrayAdapter(requireContext(), R.layout.list_item, years)
+        (binding.etYearEdit as? AutoCompleteTextView)?.setAdapter(yearsAdapter)
+
+        val months = listOf(
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December"
+        )
+        val monthsAdapter = ArrayAdapter(requireContext(), R.layout.list_item, months)
+        (binding.etMonthEdit as? AutoCompleteTextView)?.setAdapter(monthsAdapter)
+
+        (binding.etMonthEdit as? AutoCompleteTextView)?.onItemClickListener =
+            OnItemClickListener { adapterView, view, i, l ->
+                val selectedValue: String = months[i]
+                Toast.makeText(
+                    activity,
+                    "Selected item is $selectedValue, index: $i",
+                    Toast.LENGTH_SHORT
+                )
+                    .show()
+            }
+
+
         val chart = binding.barChart
         chart.description.isEnabled = false
 
