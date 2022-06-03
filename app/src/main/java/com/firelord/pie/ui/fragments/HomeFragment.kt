@@ -44,50 +44,14 @@ class HomeFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
 
-
-        val years = listOf(1970..2032).flatten()
-        val yearsAdapter = ArrayAdapter(requireContext(), R.layout.list_item, years)
-        (binding.etYearEdit as? AutoCompleteTextView)?.setAdapter(yearsAdapter)
-
-        val months = listOf(
-            "January",
-            "February",
-            "March",
-            "April",
-            "May",
-            "June",
-            "July",
-            "August",
-            "September",
-            "October",
-            "November",
-            "December"
-        )
-        val monthsAdapter = ArrayAdapter(requireContext(), R.layout.list_item, months)
-        (binding.etMonthEdit as? AutoCompleteTextView)?.setAdapter(monthsAdapter)
-
-        // Year Listener
-        (binding.etYearEdit as? AutoCompleteTextView)?.onItemClickListener =
-            OnItemClickListener { adapterView, view, i, l ->
-                year = years[i]
-                calculateDaysCount()
-                if (year!=0 && month!=0) {
-                    drawChart()
-                }
-            }
-
-        // Month listener
-        (binding.etMonthEdit as? AutoCompleteTextView)?.onItemClickListener =
-            OnItemClickListener { adapterView, view, i, l ->
-                month = i+1
-                Log.i("monthCount:","$month")
-                calculateDaysCount()
-                if (year!=0 && month!=0) {
-                    drawChart()
-                }
-            }
+        setTextField()
 
         return binding.root
+    }
+
+    override fun onResume() {
+        super.onResume()
+        setTextField()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -194,5 +158,49 @@ class HomeFragment : Fragment() {
             }
         }
         return count
+    }
+
+    fun setTextField(){
+        val years = listOf(1970..2032).flatten()
+        val yearsAdapter = ArrayAdapter(requireContext(), R.layout.list_item, years)
+        (binding.etYearEdit as? AutoCompleteTextView)?.setAdapter(yearsAdapter)
+
+        val months = listOf(
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December"
+        )
+        val monthsAdapter = ArrayAdapter(requireContext(), R.layout.list_item, months)
+        (binding.etMonthEdit as? AutoCompleteTextView)?.setAdapter(monthsAdapter)
+
+        // Year Listener
+        (binding.etYearEdit as? AutoCompleteTextView)?.onItemClickListener =
+            OnItemClickListener { adapterView, view, i, l ->
+                year = years[i]
+                calculateDaysCount()
+                if (year!=0 && month!=0) {
+                    drawChart()
+                }
+            }
+
+        // Month listener
+        (binding.etMonthEdit as? AutoCompleteTextView)?.onItemClickListener =
+            OnItemClickListener { adapterView, view, i, l ->
+                month = i+1
+                Log.i("monthCount:","$month")
+                calculateDaysCount()
+                if (year!=0 && month!=0) {
+                    drawChart()
+                }
+            }
     }
 }
