@@ -16,6 +16,7 @@ import com.github.mikephil.charting.components.XAxis.XAxisPosition
 import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet
 import com.github.mikephil.charting.utils.ColorTemplate
 import java.util.*
@@ -150,6 +151,19 @@ class HomeFragment : Fragment() {
             chart.data = data
             chart.setFitBars(true)
         }
+
+        // Setting label for x axis
+        val labels = listOf(
+            "Null",
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Sunday",
+            "Saturday"
+            )
+        xAxis.valueFormatter = IndexAxisValueFormatter(labels)
 
         chart.invalidate()
 
