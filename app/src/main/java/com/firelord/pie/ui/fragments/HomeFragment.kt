@@ -19,7 +19,6 @@ import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet
 import com.github.mikephil.charting.utils.ColorTemplate
 import java.util.*
-import kotlin.collections.ArrayList
 
 
 class HomeFragment : Fragment() {
@@ -145,7 +144,7 @@ class HomeFragment : Fragment() {
             set1 = BarDataSet(values, "Data Set")
             set1.setColors(*ColorTemplate.VORDIPLOM_COLORS)
             set1.setDrawValues(false)
-            val dataSets = java.util.ArrayList<IBarDataSet>()
+            val dataSets = ArrayList<IBarDataSet>()
             dataSets.add(set1)
             val data = BarData(dataSets)
             chart.data = data
