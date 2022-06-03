@@ -2,7 +2,12 @@
 A small project to show firebase login and charts in android.
 
 ## Download / watch
-You can download the app to test by pressing this [Download](https://github.com/FireLord/pie/raw/master/app-debug.apk)
+You can download the app to test by pressing this [Download](https://github.com/FireLord/pie/raw/master/app-debug.apk) or check screenshots
+- [LoginPage](https://raw.githubusercontent.com/FireLord/pie/master/screenshots/LoginPage.png)
+- [SignUpPage](https://raw.githubusercontent.com/FireLord/pie/master/screenshots/SignUpPage.png)
+- [BarChart](https://raw.githubusercontent.com/FireLord/pie/master/screenshots/BarChartPage.png)
+- [PieChartGraph](https://raw.githubusercontent.com/FireLord/pie/master/screenshots/PieChartGraph.png)
+- [LogoutPage](https://raw.githubusercontent.com/FireLord/pie/master/screenshots/LogoutPage.png)
 
 ## Tech stack
 
