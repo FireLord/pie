@@ -71,7 +71,9 @@ class HomeFragment : Fragment() {
             OnItemClickListener { adapterView, view, i, l ->
                 year = years[i]
                 calculateDaysCount()
-                drawChart()
+                if (year!=0 && month!=0) {
+                    drawChart()
+                }
             }
 
         // Month listener
@@ -80,7 +82,9 @@ class HomeFragment : Fragment() {
                 month = i+1
                 Log.i("monthCount:","$month")
                 calculateDaysCount()
-                drawChart()
+                if (year!=0 && month!=0) {
+                    drawChart()
+                }
             }
 
         return binding.root
