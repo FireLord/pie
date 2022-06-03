@@ -8,6 +8,7 @@ You can download the app to test by pressing this [Download](https://github.com/
 - [BarChart](https://raw.githubusercontent.com/FireLord/pie/master/screenshots/BarChartPage.png)
 - [PieChartGraph](https://raw.githubusercontent.com/FireLord/pie/master/screenshots/PieChartGraph.png)
 - [LogoutPage](https://raw.githubusercontent.com/FireLord/pie/master/screenshots/LogoutPage.png)
+- Or you can view the app demo [video](https://github.com/FireLord/pie/raw/master/screen-20220603-173424.mp4)
 
 ## Tech stack
 
