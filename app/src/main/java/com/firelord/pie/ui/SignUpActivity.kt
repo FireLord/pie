@@ -42,6 +42,11 @@ class SignUpActivity : AppCompatActivity() {
             validateData()
         }
 
+        binding.tvBefore.setOnClickListener {
+            startActivity(Intent(this,LoginActivity::class.java))
+            finish()
+        }
+
     }
 
     override fun onBackPressed() {
