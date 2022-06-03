@@ -78,7 +78,7 @@ class PieFragment : Fragment() {
         // entry label styling
 
         // entry label styling
-        chart.setEntryLabelColor(Color.WHITE)
+        chart.setEntryLabelColor(Color.BLACK)
         chart.setEntryLabelTextSize(12f)
 
     }
@@ -116,7 +116,7 @@ class PieFragment : Fragment() {
         val data = PieData(dataSet)
         data.setValueFormatter(PercentFormatter())
         data.setValueTextSize(11f)
-        data.setValueTextColor(Color.WHITE)
+        data.setValueTextColor(Color.BLACK)
         chart.setData(data)
 
         // undo all highlights
