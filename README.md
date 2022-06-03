@@ -19,7 +19,7 @@ The libraries used:
 - [AppCompat](https://developer.android.com/jetpack/androidx/releases/appcompat)
 - [Fragments](https://developer.android.com/jetpack/androidx/releases/fragment)
 - [Material Components](https://material.io/develop/android)
-- [Firebase](https://firebase.google.com/) for login to account from email, google, facebook
+- [Firebase](https://firebase.google.com/) for login to account from email, google
 - [MPAndroidChart](https://github.com/PhilJay/MPAndroidChart) for all the charts
 - [Bottom Navigation](https://material.io/components/bottom-navigation/android) for bottom navigation
 - [AndroidX Navigation](https://developer.android.com/guide/navigation) for handling navigation events
